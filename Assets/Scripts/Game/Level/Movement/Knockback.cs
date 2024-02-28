@@ -12,6 +12,7 @@ namespace Game.Level.Movement
 
         [SerializeField] private Vector2 knockback = new(20, 20);
         [SerializeField] private LayerMask enemyLayerMask;
+        [SerializeField] private LayerMask groundLayer;
         
         [SerializeField] private float tValue;
         
@@ -27,13 +28,20 @@ namespace Game.Level.Movement
         {
             playerJump.onGroundedChanged.AddListener(OnGroundedChanged);
             playerJump.hitCeiling.AddListener(HitCeiling);
+            playerJump.jumped.AddListener(Jumped);
         }
+
 
 
         private void OnDisable()
         {
             playerJump.onGroundedChanged.RemoveListener(OnGroundedChanged);
             playerJump.hitCeiling.RemoveListener(HitCeiling);
+            playerJump.jumped.RemoveListener(Jumped);
+        }
+        private void Jumped()
+        {
+            currentVelocity = Vector2.zero;
         }
 
         private void HitCeiling()
@@ -57,8 +65,14 @@ namespace Game.Level.Movement
 
         private void Update()
         {
+            
             currentVelocity = Vector2.Lerp(currentVelocity, Vector2.zero, tValue * Time.deltaTime);
-
+            
+            if (Physics2D.Raycast(transform.position, currentVelocity.normalized, 0.5f, groundLayer))
+            {
+                currentVelocity = Vector2.zero;
+            }
+            
             if (currentVelocity.magnitude < 0.2f)
             {
                 playerJump.SetJumpActive(true);
@@ -138,6 +152,7 @@ namespace Game.Level.Movement
             EditorGUILayout.PropertyField(serializedObject.FindProperty("playerJump"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("knockback"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("enemyLayerMask"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("groundLayer"));
             
             EditorGUILayout.Space(20);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("tValue"));

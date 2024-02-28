@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 3564851071558703064}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.45, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 6652339836397236811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.45, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -300,10 +300,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   downwardsVelocity: 0
-  mass: 5.5
-  jumpMagnitude: 0.13
+  mass: 3.42
+  jumpMagnitude: 0.11
   maxVelocity: -3
   onGroundedChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  jumped:
     m_PersistentCalls:
       m_Calls: []
   hitCeiling:
@@ -353,6 +356,9 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   tValue: 1
 --- !u!61 &1327917334470128389
 BoxCollider2D:

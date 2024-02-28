@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5608850100153585141}
   - component: {fileID: 5740131720706062406}
   - component: {fileID: 5194620777841775297}
+  - component: {fileID: 3909301687667059074}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -111,9 +112,12 @@ MonoBehaviour:
     m_Bits: 64
   downwardsVelocity: 0
   mass: 5.5
-  jumpMagnitude: 0.16
+  jumpMagnitude: 0.165
   maxVelocity: -3
   onGroundedChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  jumped:
     m_PersistentCalls:
       m_Calls: []
   hitCeiling:
@@ -138,6 +142,11 @@ MonoBehaviour:
   player: {fileID: 0}
   leaveDistance: 15
   followDistance: 7
+  left: {fileID: 4084604127888516010}
+  right: {fileID: 1379496195417790456}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   state: 0
 --- !u!61 &5194620777841775297
 BoxCollider2D:
@@ -184,6 +193,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &3909301687667059074
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216638253146570612}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &2225282964975830788
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +245,7 @@ Transform:
   m_GameObject: {fileID: 2225282964975830788}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.45, z: 0}
+  m_LocalPosition: {x: 0.49, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -302,7 +338,7 @@ Transform:
   m_GameObject: {fileID: 5569116472089426105}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.45, z: 0}
+  m_LocalPosition: {x: 0.49, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

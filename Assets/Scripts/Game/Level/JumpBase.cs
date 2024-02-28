@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using Utility.UI;
@@ -23,7 +24,7 @@ namespace Game.Level
 
 
         [HideInInspector] [Space(10)] public UnityEvent<bool> onGroundedChanged;
-
+        [HideInInspector] public UnityEvent jumped;
         [HideInInspector] public UnityEvent hitCeiling;
 
 
@@ -52,6 +53,7 @@ namespace Game.Level
                 return;
             }
 
+            jumped.Invoke();
             downwardsVelocity = jumpMagnitude;
             SetGrounded(false);
         }
@@ -115,6 +117,24 @@ namespace Game.Level
         bool CeilingRaycast()
         {
             return Physics2D.Raycast(up.position, Vector2.up, floorDistance, layerMask);
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            foreach (ContactPoint2D contact in other.contacts)
+            {
+
+                float y = transform.position.y - 1f;
+                Debug.Log("transform.position.y = " + transform.position.y);
+                Debug.Log("y = " + y);
+                if (contact.point.y < y)
+                {
+                    Debug.Log(contact.point.y + "SDA" + y);
+                }
+                print(contact.collider.name + " hit " + contact.otherCollider.name);
+                // Visualize the contact point
+                Debug.DrawRay(contact.point, contact.normal, Color.white);
+            }
         }
     }
 }

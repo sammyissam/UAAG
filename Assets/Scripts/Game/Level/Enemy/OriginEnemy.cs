@@ -13,6 +13,9 @@ namespace Game.Level.Enemy
 
         [SerializeField] private float leaveDistance;
         [SerializeField] private float followDistance;
+        [SerializeField] private Transform left;
+        [SerializeField] private Transform right;
+        [SerializeField] private LayerMask groundLayer;
         
         private Vector3 _origin;
         private Camera _mainCamera;
@@ -121,6 +124,23 @@ namespace Game.Level.Enemy
             else
             {
                 x *= 1;
+            }
+            
+            if (x > 0)
+            {
+                //Checks if theres a wall to the right of the player within the max delta distance. 
+                if (Physics2D.Raycast(right.position, Vector2.right, 0.02f, groundLayer))
+                {
+                    x = 0; // Disables Horizontal movement
+                }
+            }
+            else if (x < 0) 
+            {
+                // Checks if theres a wall to the left of player within maxDelta Distance
+                if (Physics2D.Raycast(left.position, Vector2.left, 0.02f, groundLayer))
+                {
+                    x = 0; // Disables Horizontal movement
+                }
             }
 
             //I dont know why we use Vars here but my IDE recommends it so i trust it 
