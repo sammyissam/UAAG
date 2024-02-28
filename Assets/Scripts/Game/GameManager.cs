@@ -31,6 +31,11 @@ namespace Game
                 _levelReferencesDictionary.Add(l.levelName.ToLower(), l.positionToSpawn);
             }
         }
+        
+        public void SetLevel(string s)
+        {
+            lastLevel = s;
+        }
 
         public Vector3 GetPositionToSpawn()
         {

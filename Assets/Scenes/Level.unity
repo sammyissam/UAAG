@@ -322,6 +322,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &277502247 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3743469601201050611, guid: 7630e46e8deb85640b7659e82bb38b5c, type: 3}
+  m_PrefabInstance: {fileID: 8239965362924563534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e1bb3c025303445941a46b6cb81665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &713632663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7475075677311408122, guid: 6c3801a9d53264b87b1221a3b1484cfc, type: 3}
@@ -731,7 +742,7 @@ GameObject:
   - component: {fileID: 1591417440}
   - component: {fileID: 1591417443}
   - component: {fileID: 1591417442}
-  - component: {fileID: 1591417441}
+  - component: {fileID: 1591417444}
   m_Layer: 0
   m_Name: EndTrigger
   m_TagString: Untagged
@@ -754,18 +765,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 78325864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1591417441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591417439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ba804c2e4b431a9d52c78d8e504052, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1591417442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,16 +780,40 @@ MonoBehaviour:
   triggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1591417441}
-        m_TargetAssemblyTypeName: Utility.GameFlow.SwitchSceneRelay, Assembly-CSharp
-        m_MethodName: SwitchScene
+      - m_Target: {fileID: 8950304426812491424}
+        m_TargetAssemblyTypeName: Game.GameManager, Assembly-CSharp
+        m_MethodName: SetLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Overworld
+          m_StringArgument: level
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 277502247}
+        m_TargetAssemblyTypeName: Game.UI.FadeManager, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1591417444}
+        m_TargetAssemblyTypeName: Utility.GameFlow.TriggerParent, Assembly-CSharp
+        m_MethodName: Trigger
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
   triggerExit:
@@ -842,6 +865,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1591417444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591417439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ba804c2e4b431a9d52c78d8e504052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextTrigger: {fileID: 0}
+  delay: 0
+  sceneToGoTo: Overworld
 --- !u!1 &1961105091
 GameObject:
   m_ObjectHideFlags: 0
@@ -8305,7 +8343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2216638253146570612, guid: 6c3801a9d53264b87b1221a3b1484cfc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5740131720706062406, guid: 6c3801a9d53264b87b1221a3b1484cfc, type: 3}
       propertyPath: player
@@ -8313,11 +8351,11 @@ PrefabInstance:
       objectReference: {fileID: 1560613215}
     - target: {fileID: 7475075677311408122, guid: 6c3801a9d53264b87b1221a3b1484cfc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.034366
+      value: 15.46
       objectReference: {fileID: 0}
     - target: {fileID: 7475075677311408122, guid: 6c3801a9d53264b87b1221a3b1484cfc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.4333777
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7475075677311408122, guid: 6c3801a9d53264b87b1221a3b1484cfc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8470,6 +8508,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7879d51d4f331b4f84920670eb89441, type: 3}
+--- !u!114 &8950304426812491424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 405219759238195602, guid: b7879d51d4f331b4f84920670eb89441, type: 3}
+  m_PrefabInstance: {fileID: 8950304426812491423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6c2d1630c04bdc85eeb121d02bed3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level
   m_EditorClassIdentifier: 
   levelName: Level
-  positionToSpawn: {x: 100, y: 150, z: 0}
+  positionToSpawn: {x: 0, y: 0, z: 0}
