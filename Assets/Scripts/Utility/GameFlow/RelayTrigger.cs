@@ -25,6 +25,8 @@ namespace Utility.GameFlow
         {
             RelayTrigger t = (RelayTrigger)target;
 
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("onTrigger"));
+            
             EditorGUILayout.LabelField("Next Command");
             EditorGUILayout.BeginHorizontal();
             t.nextTrigger = (TriggerParent)EditorGUILayout.ObjectField(t.nextTrigger, typeof(TriggerParent), true);

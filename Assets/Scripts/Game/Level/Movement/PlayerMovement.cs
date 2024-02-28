@@ -6,7 +6,7 @@ namespace Game.Level.Movement
 {
     public class PlayerMovement : Pauseable
     {
-        [SerializeField] private IntReference speed;
+        [SerializeField] private FloatReference speed;
         [SerializeField] private bool rawInputs;
 
         [SerializeField] private Transform left;
@@ -54,7 +54,7 @@ namespace Game.Level.Movement
             var vector3 = transform1.position;
             
             
-            vector3.x += x * speed.i; 
+            vector3.x += x * speed.f; 
             transform1.position = vector3;
         }
     }
