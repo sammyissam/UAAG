@@ -13,7 +13,7 @@ namespace Game.Level
 
 
         public bool grounded { get; private set; }
-        [SerializeField] private float downwardsVelocity;
+        [SerializeField] internal float downwardsVelocity;
 
         [Header("Jump Physics")] [SerializeField]
         private float mass = 5.5f;
@@ -26,6 +26,8 @@ namespace Game.Level
 
         [HideInInspector] public UnityEvent hitCeiling;
 
+
+        internal float max;
 
         protected virtual void Update()
         {
@@ -40,6 +42,7 @@ namespace Game.Level
             transform1.position = vector3;
 
             GroundedCheck();
+            CeilingCheck();
         }
 
         private protected virtual void Jump()
@@ -71,11 +74,11 @@ namespace Game.Level
             }
         }
 
-        private void GroundedCheck()
+        internal virtual void GroundedCheck()
         {
             var position = down.position;
 
-            float max = floorDistance;
+            max = floorDistance;
 
             // Extend distance check for ground depending on how fast your going
             if (downwardsVelocity < -0.1f)
@@ -93,7 +96,10 @@ namespace Game.Level
             {
                 SetGrounded(false);
             }
+        }
 
+        void CeilingCheck()
+        {
             //If ceiling above player
             if (CeilingRaycast())
             {

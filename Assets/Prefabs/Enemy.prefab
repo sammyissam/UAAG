@@ -111,7 +111,7 @@ MonoBehaviour:
     m_Bits: 64
   downwardsVelocity: 0
   mass: 5.5
-  jumpMagnitude: 0.24
+  jumpMagnitude: 0.16
   maxVelocity: -3
   onGroundedChanged:
     m_PersistentCalls:
@@ -121,7 +121,7 @@ MonoBehaviour:
       m_Calls: []
   left: {fileID: 4084604127888516010}
   right: {fileID: 1379496195417790456}
-  jumpThreshold: 0.5
+  jumpThreshold: 1
 --- !u!114 &5740131720706062406
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,10 @@ namespace Game.Level.Movement
 
         [SerializeField] private bool jumpActive;
 
+        [SerializeField] private Transform downLeft;
+        [SerializeField] private Transform downRight;
+        
+
         private void OnEnable()
         {
             onGroundedChanged.AddListener(GroundChanged);
@@ -60,6 +64,23 @@ namespace Game.Level.Movement
             _jumpsLeft -= 1;
             timer = cooldown;
             Jump();
+        }
+
+
+        internal override void GroundedCheck()
+        {
+            base.GroundedCheck();
+            
+            if (Physics2D.Raycast(downLeft.position, Vector3.down, max, layerMask))
+            {
+                downwardsVelocity = 0f;
+                SetGrounded(true);
+            }
+            if (Physics2D.Raycast(downRight.position, Vector3.down, max, layerMask))
+            {
+                downwardsVelocity = 0f;
+                SetGrounded(true);
+            }
         }
     }
 }
