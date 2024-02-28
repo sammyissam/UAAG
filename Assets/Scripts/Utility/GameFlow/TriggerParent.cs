@@ -50,7 +50,7 @@ namespace Utility.GameFlow
         
         // EditorGUILayout.LabelField("Next Command");
         // EditorGUILayout.BeginHorizontal();
-        // t.triggerA = (TriggerA)EditorGUILayout.ObjectField(t.triggerA, typeof(TriggerA), true);
+        // t.nextTrigger = (TriggerParent)EditorGUILayout.ObjectField(t.nextTrigger, typeof(TriggerParent), true);
         // t.delay = EditorGUILayout.FloatField(t.delay);
         // EditorGUILayout.EndHorizontal();
         
