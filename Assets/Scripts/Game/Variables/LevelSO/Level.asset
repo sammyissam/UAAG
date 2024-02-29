@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f897842c829114e830faaf4531071f, type: 3}
   m_Name: Level
   m_EditorClassIdentifier: 
-  levelName: Level
-  positionToSpawn: {x: 100, y: 0, z: 0}
+  levelName: Level1
+  positionToSpawn: {x: 0, y: 0, z: 0}
