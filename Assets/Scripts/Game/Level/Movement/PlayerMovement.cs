@@ -1,61 +1,57 @@
-using UnityEngine;
-using Utility.ScriptableObjects;
-using Utility.UI;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Game.Level.Movement
 {
-    public class PlayerMovement : Pauseable
+    public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private FloatReference speed;
-        [SerializeField] private bool rawInputs;
+        [SerializeField] private Rigidbody2D rB2D;
+        [SerializeField] private Transform groundCheck;
+        [SerializeField] private float groundRadius;
 
-        [SerializeField] private Transform left;
-        [SerializeField] private Transform right;
 
-        [SerializeField] private float maxDelta;
-        [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private LayerMask groundMask;
+
+        [SerializeField] private float jumpMagnitude = 10;
+        [SerializeField] private bool grounded;
+        
+        
+        private float x;
+        [SerializeField] private float playerSpeed;
 
         private void Update()
         {
-            float x;
-            if (rawInputs)
+            Jump();
+            Move();
+        }
+
+        private void Move()
+        {
+            x = Input.GetAxis("Horizontal");
+            
+            rB2D.AddForce(new Vector2(x * Time.deltaTime * playerSpeed, 0f));
+            
+        }
+
+        private void Jump()
+        {
+            if (Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask))
             {
-                x = Input.GetAxisRaw("Horizontal");
+                grounded = true;
             }
             else
             {
-                x = Input.GetAxis("Horizontal");
+                grounded = false;
             }
 
-            
-            x *= Time.deltaTime;
-
-
-            if (x > 0)
+            if (grounded)
             {
-                //Checks if theres a wall to the right of the player within the max delta distance. 
-                if (Physics2D.Raycast(right.position, Vector2.right, maxDelta, groundLayer))
+                if (Input.GetAxis("Jump") != 0)
                 {
-                    x = 0; // Disables Horizontal movement
+                    rB2D.AddForce(new Vector2(0f, jumpMagnitude));
                 }
             }
-            else if (x < 0) 
-            {
-                // Checks if theres a wall to the left of player within maxDelta Distance
-                if (Physics2D.Raycast(left.position, Vector2.left, maxDelta, groundLayer))
-                {
-                    x = 0; // Disables Horizontal movement
-                }
-            }
-
-            
-            //I dont know why we use Vars here but my IDE recommends it so i trust it 
-            var transform1 = transform;
-            var vector3 = transform1.position;
-            
-            
-            vector3.x += x * speed.f; 
-            transform1.position = vector3;
         }
     }
 }
