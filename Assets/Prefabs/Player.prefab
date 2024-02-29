@@ -196,11 +196,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4446772734534619168}
   - component: {fileID: 2752824953806120782}
-  - component: {fileID: 2976008785540035004}
-  - component: {fileID: 5737056782837568009}
-  - component: {fileID: 6621353066503243013}
   - component: {fileID: 1327917334470128389}
   - component: {fileID: 666841421354322849}
+  - component: {fileID: 8475178037619019875}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -281,85 +279,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2976008785540035004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8005401298950553020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46b7e20f0135454bb31fd49de5e67bc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  down: {fileID: 3695396961228828195}
-  up: {fileID: 7023906476703151590}
-  floorDistance: 0.02
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  downwardsVelocity: 0
-  mass: 3.42
-  jumpMagnitude: 0.11
-  maxVelocity: -3
-  onGroundedChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  jumped:
-    m_PersistentCalls:
-      m_Calls: []
-  hitCeiling:
-    m_PersistentCalls:
-      m_Calls: []
-  maxJumps: 1
-  cooldown: 0.23
-  jumpActive: 1
-  downLeft: {fileID: 1005447698636494051}
-  downRight: {fileID: 838297964392596198}
---- !u!114 &5737056782837568009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8005401298950553020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63dffe2fb5474156802baa78189601b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {fileID: 11400000, guid: 2cbdc45fe56924b879ab3d6655ff4243, type: 2}
-  rawInputs: 0
-  left: {fileID: 416750753124735069}
-  right: {fileID: 3653320782815510210}
-  maxDelta: 0.02
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &6621353066503243013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8005401298950553020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92538a73677b04d30bbb2c9e76551396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentVelocity: {x: 0, y: 0}
-  knockBackForce: 25
-  playerJump: {fileID: 2976008785540035004}
-  knockback: {x: 20, y: 20}
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  tValue: 1
 --- !u!61 &1327917334470128389
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -420,7 +339,7 @@ Rigidbody2D:
   m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1.62
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -431,4 +350,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
+--- !u!114 &8475178037619019875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8005401298950553020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7457cf04518e4090b12a0a2bfdb90a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpMagnitude: 10

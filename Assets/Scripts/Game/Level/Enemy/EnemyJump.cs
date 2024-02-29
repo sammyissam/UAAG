@@ -1,39 +1,31 @@
-using UnityEngine;
-
-namespace Game.Level.Enemy
+﻿namespace Game.Level.Enemy
 {
-    public class EnemyJump : JumpBase
+    using UnityEngine;
+
+    namespace Game.Level.Enemy
     {
-        [Space(20)]
-        [SerializeField] private Transform left;
-        [SerializeField] private Transform right;
-        [SerializeField] private float jumpThreshold;
-
-        protected override void Update()
+        public class EnemyJump : JumpBase
         {
-            if (grounded)
-            {
-                if (Physics2D.Raycast(left.position, Vector2.left, jumpThreshold, layerMask))
-                {
-                    Jump();
-                }
-                else if (Physics2D.Raycast(right.position, Vector2.right, jumpThreshold, layerMask))
-                {
-                    Jump();
-                }
-            }
+            [Space(20)] [SerializeField] private Transform left;
+            [SerializeField] private Transform right;
+            [SerializeField] private float jumpThreshold;
+            [SerializeField] private LayerMask layerMask;
 
-            base.Update();
-        }
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (grounded)
+            internal void Update()
             {
-                if (other.gameObject.layer == 8)
+                if (grounded)
                 {
-                    Jump();
+                    if (Physics2D.Raycast(left.position, Vector2.left, jumpThreshold, layerMask))
+                    {
+                        Jump();
+                    }
+                    else if (Physics2D.Raycast(right.position, Vector2.right, jumpThreshold, layerMask))
+                    {
+                        Jump();
+                    }
                 }
+
             }
         }
     }
