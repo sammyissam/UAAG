@@ -11,6 +11,7 @@ namespace Game
         public static GameManager instance;
         private Dictionary<string, Vector3> _levelReferencesDictionary;
         [SerializeField] private Levels levels;
+        [SerializeField] private Vector3 defaultPosition;
 
         [SerializeField] private string lastLevel;
 
@@ -45,7 +46,7 @@ namespace Game
             }
             catch (KeyNotFoundException)
             {
-                return Vector3.zero;
+                return defaultPosition;
             }
         }
     }
@@ -62,6 +63,7 @@ namespace Game
             EditorGUILayout.PropertyField(serializedObject.FindProperty("levels"));
 
 
+         EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultPosition"));
             // var currentState = GUI.enabled;
             // GUI.enabled = false;
             EditorGUILayout.PropertyField(serializedObject.FindProperty("lastLevel"));
