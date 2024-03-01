@@ -17,7 +17,12 @@ namespace Game.Level.Enemy
 
         private float cooldown;
 
-        
+
+        private void Start()
+        {
+            playerHealth = PlayerSpawnerManager.instance.player.GetComponent<PlayerHealth>();
+        }
+
         // Im aware this is horrible code, i just have bigger priorities than to fix this.
         private void Update()
         {

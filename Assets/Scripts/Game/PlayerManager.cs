@@ -2,6 +2,7 @@ using Game.UI;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using Utility;
 
 namespace Game.Overworld.Shop
 {
@@ -19,7 +20,8 @@ namespace Game.Overworld.Shop
 
         void Awake()
         {
-            data = SaveSystem.LoadScore();
+            // data = SaveSystem.LoadScore();
+            LoadData();
             workingData = (PlayerData)data.Clone();
             
             if (instance != null)
@@ -59,19 +61,21 @@ namespace Game.Overworld.Shop
         //This Saves all data
         public void SaveData()
         {
-            SaveSystem.SaveScore(data);
-            Debug.Log("SS");
+            // SaveSystem.SaveScore(data);
+            SaveUtility.Save(data, Application.persistentDataPath, "data11");
         }
 
         //This Loads all data
         public void LoadData()
         {
-            data = SaveSystem.LoadScore();
+            // data = SaveSystem.LoadScore();
+            data = SaveUtility.Load<PlayerData>(Application.persistentDataPath, "data11");
         }
+        
 
         private void OnApplicationQuit()
         {
-            SaveSystem.SaveScore(data);
+            SaveData();
         }
 
         public override string GetText()

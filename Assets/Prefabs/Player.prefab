@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 3631237809942623782}
   - component: {fileID: 9007402969504197683}
   - component: {fileID: 3906591386919037178}
+  - component: {fileID: 7447797122905771513}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -269,8 +270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc637afe4338456391b9db09fc6814a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 100
-  CurrentHealth: 100
+  initialHealth: 0
+  currentHealth: 0
+  deathTrigger: {fileID: 0}
+  defaultHealth: 20
 --- !u!50 &9007402969504197683
 Rigidbody2D:
   serializedVersion: 4
@@ -343,3 +346,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7447797122905771513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732189125389105070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd9e86ab3df45ae91c801d99d1f0f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

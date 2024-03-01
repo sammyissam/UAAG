@@ -31,12 +31,22 @@ namespace Game.Level.Enemy
         [SerializeField] private int state = 0;
         [SerializeField] private bool enableMovement;
 
+
+        protected override void Awake()
+        {
+
+        }
+
         private void Start()
         {
             _enemyJump = GetComponent<EnemyJump>();
             enableMovement = true;
             _mainCamera = Camera.main;
             _renderer = GetComponent<SpriteRenderer>();
+
+            Debug.Log(PlayerSpawnerManager.instance);
+            Debug.Log(PlayerSpawnerManager.instance.player.transform);
+            player = PlayerSpawnerManager.instance.player.transform;
 
             StartCoroutine(Origin());
         }
