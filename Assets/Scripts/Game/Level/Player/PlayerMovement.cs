@@ -2,7 +2,7 @@
 using Utility.ScriptableObjects;
 using Utility.UI;
 
-namespace Game.Level.Movement
+namespace Game.Level.Player
 {
     public class PlayerMovement : Pauseable
     {

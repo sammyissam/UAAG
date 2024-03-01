@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Level.Movement
+namespace Game.Level.Player
 {
     public class PlayerJump : JumpBase
     {

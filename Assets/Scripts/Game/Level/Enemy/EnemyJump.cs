@@ -1,4 +1,6 @@
-﻿namespace Game.Level.Enemy
+﻿using System;
+
+namespace Game.Level.Enemy
 {
     using UnityEngine;
 
@@ -10,22 +12,30 @@
             [SerializeField] private Transform right;
             [SerializeField] private float jumpThreshold;
             [SerializeField] private LayerMask layerMask;
+            private float countdown;
 
+            private void Start()
+            {
+                countdown = 1;
+            }
 
             internal void Update()
             {
+                countdown -= Time.deltaTime;
                 if (grounded)
                 {
-                    if (Physics2D.Raycast(left.position, Vector2.left, jumpThreshold, layerMask))
+                    if (countdown < 0)
                     {
-                        Jump();
-                    }
-                    else if (Physics2D.Raycast(right.position, Vector2.right, jumpThreshold, layerMask))
-                    {
-                        Jump();
+                        if (Physics2D.Raycast(left.position, Vector2.left, jumpThreshold, layerMask))
+                        {
+                            Jump();
+                        }
+                        else if (Physics2D.Raycast(right.position, Vector2.right, jumpThreshold, layerMask))
+                        {
+                            Jump();
+                        }
                     }
                 }
-
             }
         }
     }

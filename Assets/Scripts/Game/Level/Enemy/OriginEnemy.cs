@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Game.Level.Enemy.Game.Level.Enemy;
 using UnityEngine;
 using Utility;
@@ -17,7 +18,7 @@ namespace Game.Level.Enemy
         [SerializeField] private Transform left;
         [SerializeField] private Transform right;
         [SerializeField] private LayerMask groundLayer;
-        
+
         private Vector3 _origin;
         private Camera _mainCamera;
 
@@ -28,13 +29,13 @@ namespace Game.Level.Enemy
         // 1 = moving towards player
         // 2 = moving to origin
         [SerializeField] private int state = 0;
+        [SerializeField] private bool enableMovement;
 
         private void Start()
         {
             _enemyJump = GetComponent<EnemyJump>();
-            // _origin = transform.position;
+            enableMovement = true;
             _mainCamera = Camera.main;
-
             _renderer = GetComponent<SpriteRenderer>();
 
             StartCoroutine(Origin());
@@ -55,7 +56,7 @@ namespace Game.Level.Enemy
         {
             float playerDistance = Vector3.Distance(gameObject.transform.position, player.position);
             float originDistance = Vector3.Distance(_origin, transform.position);
-            
+
             //Start walking to origin if player is too far away
             if (playerDistance > leaveDistance)
             {
@@ -126,7 +127,7 @@ namespace Game.Level.Enemy
             {
                 x *= 1;
             }
-            
+
             if (x > 0)
             {
                 //Checks if theres a wall to the right of the player within the max delta distance. 
@@ -135,7 +136,7 @@ namespace Game.Level.Enemy
                     x = 0; // Disables Horizontal movement
                 }
             }
-            else if (x < 0) 
+            else if (x < 0)
             {
                 // Checks if theres a wall to the left of player within maxDelta Distance
                 if (Physics2D.Raycast(left.position, Vector2.left, 0.02f, groundLayer))
@@ -149,7 +150,24 @@ namespace Game.Level.Enemy
             var vector3 = transform1.position;
 
             vector3.x += x * speed.f;
-            transform1.position = vector3;
+            if (enableMovement)
+                transform1.position = vector3;
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.layer == 3)
+            {
+                enableMovement = false;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D other)
+        {
+            if (other.gameObject.layer == 3)
+            {
+                enableMovement = true;
+            }
         }
     }
 }
