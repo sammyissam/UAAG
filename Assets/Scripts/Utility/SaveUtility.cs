@@ -71,10 +71,6 @@ namespace Utility
             {
                 directory += "/";
             }
-            if (!directory.Substring(0, 1).Equals("/"))
-            {
-                directory = "/" + directory;
-            }
 
             return directory;
         }

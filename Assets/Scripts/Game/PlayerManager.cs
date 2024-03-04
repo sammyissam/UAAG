@@ -1,3 +1,4 @@
+using System.IO;
 using Game.UI;
 using UnityEditor;
 using UnityEngine;
@@ -62,14 +63,22 @@ namespace Game.Overworld.Shop
         public void SaveData()
         {
             // SaveSystem.SaveScore(data);
-            SaveUtility.Save(data, Application.persistentDataPath, "data11");
+            SaveUtility.Save(data, Application.persistentDataPath, "playerData");
         }
 
         //This Loads all data
         public void LoadData()
         {
             // data = SaveSystem.LoadScore();
-            data = SaveUtility.Load<PlayerData>(Application.persistentDataPath, "data11");
+            try
+            {
+
+                data = SaveUtility.Load<PlayerData>(Application.persistentDataPath, "playerData");
+            }
+            catch (FileNotFoundException)
+            {
+                data = new PlayerData();
+            }
         }
         
 

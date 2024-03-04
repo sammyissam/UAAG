@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using Utility.GameFlow;
 
 namespace Game.UI
 {
@@ -9,6 +10,11 @@ namespace Game.UI
         [SerializeField] private Animator animator;
         private static readonly int Out = Animator.StringToHash("FadeOut");
         private static readonly int In = Animator.StringToHash("FadeIn");
+
+
+        [SerializeField] private TriggerParent disable;
+        [SerializeField] private TriggerParent enable;
+        
 
         private void Start()
         {
@@ -26,11 +32,14 @@ namespace Game.UI
         public void FadeIn()
         {
             animator.SetTrigger(In);
+            disable.Trigger(0.5f);
         }
 
 
+            
         public void FadeOut()
         {
+            enable.Trigger(0);
             animator.SetTrigger(Out);
         }
     }
@@ -66,6 +75,8 @@ namespace Game.UI
 
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("animator"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("enable"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("disable"));
 
             serializedObject.ApplyModifiedProperties();
         }

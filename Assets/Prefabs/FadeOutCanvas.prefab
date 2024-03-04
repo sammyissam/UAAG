@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6060673473391027415}
   - component: {fileID: 7620534633929018585}
   - component: {fileID: 7777564482316629644}
+  - component: {fileID: 5208789443022623786}
+  - component: {fileID: 4236512217563392038}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -112,6 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6060673473391027415}
+  disable: {fileID: 5208789443022623786}
+  enable: {fileID: 4236512217563392038}
 --- !u!114 &7777564482316629644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +128,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee4de750a0642569e902553598cdedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5208789443022623786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3726660885415621271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e24b9e1ab7489a91bfacf67a56e55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextTrigger: {fileID: 0}
+  delay: 0
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2251819013762751007}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4236512217563392038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3726660885415621271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e24b9e1ab7489a91bfacf67a56e55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextTrigger: {fileID: 0}
+  delay: 0
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2251819013762751007}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &7007358802402958580
 GameObject:
   m_ObjectHideFlags: 0
